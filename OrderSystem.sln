@@ -11,20 +11,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "src\Services\ProductService\ProductService.csproj", "{5F666F47-39EE-4D38-B595-BE4981191327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSystemAPI", "src\App\OrderSystemAPI\OrderSystemAPI.csproj", "{589D5B4F-624A-4357-A765-0861C4C6E85C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderSystemAPI", "src\App\OrderSystemAPI\OrderSystemAPI.csproj", "{589D5B4F-624A-4357-A765-0861C4C6E85C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "Elementi di soluzione", "{429EF2F9-363F-49A3-BFBB-BC1DCC2304E0}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "Services\OrderService\OrderService.csproj", "{42AD2BE3-B7C1-43A5-862C-075AC8D36B91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "src\Services\OrderService\OrderService.csproj", "{42AD2BE3-B7C1-43A5-862C-075AC8D36B91}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3143234A-F3D2-4C61-80D7-AD1102E71191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCommon", "src\Common\ProductCommon\ProductCommon.csproj", "{A32C6DBD-9A93-418C-9B6E-F0720160D044}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCommon", "src\Common\ProductCommon\ProductCommon.csproj", "{A32C6DBD-9A93-418C-9B6E-F0720160D044}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBroker", "src\Common\MessageBroker\MessageBroker.csproj", "{725D6C8C-3260-47C4-9575-BF62E3CBCAD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBroker", "src\Common\MessageBroker\MessageBroker.csproj", "{725D6C8C-3260-47C4-9575-BF62E3CBCAD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
