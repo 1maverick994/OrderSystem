@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Commands
 {
-    public class DeleteProductCommand : IRequest
+    public class DeleteProductCommand : IRequest<ServiceCommon.ServiceResult>
     {
         public required int Id { get; set; }
 

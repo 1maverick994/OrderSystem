@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProductCommon.Commands;
 using ProductCommon.Entities;
+using ServiceCommon;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.Commands
 {
-    internal class ListProductCommandHandler : IRequestHandler<ListProductCommand, ProductDto[]>
+    internal class ListProductCommandHandler : IRequestHandler<ListProductCommand, ServiceResult<ProductDto[]>>
     {
         ProductContext _context;
 
@@ -20,7 +21,7 @@ namespace ProductService.Commands
             _context = context;
         }
 
-        public Task<ProductDto[]> Handle(ListProductCommand request, CancellationToken cancellationToken)
+        public Task<ServiceResult<ProductDto[]>> Handle(ListProductCommand request, CancellationToken cancellationToken)
         {
 
             var products = _context
@@ -36,7 +37,7 @@ namespace ProductService.Commands
                 result.Add(new ProductDto() { Id = product.Id, Name = product.Name });
             }
 
-            return Task.FromResult(result.ToArray());
+            return Task.FromResult(ServiceResult.Success(result.ToArray()));
 
 
         }

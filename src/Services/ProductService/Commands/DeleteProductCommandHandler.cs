@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProductCommon.Commands;
 using ProductCommon.Entities;
+using ServiceCommon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.Commands
 {
-    internal class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand>
+    internal class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, ServiceCommon.ServiceResult>
     {
         ProductContext _context;
 
@@ -20,7 +21,7 @@ namespace ProductService.Commands
             _context = context;
         }
 
-        public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        public async Task<ServiceResult> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
            
 
@@ -31,11 +32,12 @@ namespace ProductService.Commands
             {
                 _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
-                
+
+                return ServiceResult.Success();
             }
             else
             {
-                throw new Exception("Unable to find product with id: " + request.Id);
+                return ServiceResult.Failed(ServiceError.NotFound);                
             }
             
         }

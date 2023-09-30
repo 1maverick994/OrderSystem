@@ -9,6 +9,7 @@ using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using System.Text.Json;
+using ServiceCommon;
 
 namespace MessageBroker.Concretes
 {
@@ -60,12 +61,12 @@ namespace MessageBroker.Concretes
 
         }
 
-        public async Task<TResponse> GetResponse<TRequest, TResponse>(string hostname, string queueName, TRequest request)
+        public async Task<ServiceResult<TResponse>> GetResponse<TRequest, TResponse>(string hostname, string queueName, TRequest request)
         {
 
             var response = await GetResponseAsString<TRequest, TResponse>(hostname, queueName, request);
 
-            return JsonSerializer.Deserialize<TResponse>(response);
+            return JsonSerializer.Deserialize<ServiceResult<TResponse>>(response);
         }
     }
 }

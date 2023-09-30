@@ -21,8 +21,7 @@ public class DeleteProductWorker : BackgroundService
 
         rpcServer.Start<DeleteProductCommand, object>(options.Value.HostName, options.Value.DeleteProductQueueName, async (cp) =>
         {
-            await sender.Send(cp);
-            return "ok";
+            return await sender.Send(cp);        
 
         });
 

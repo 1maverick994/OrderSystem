@@ -18,5 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\MessageBroker\MessageBroker.csproj" />
     <ProjectReference Include="..\..\Common\ProductCommon\ProductCommon.csproj" />
+    <ProjectReference Include="..\..\Common\ServiceCommon\ServiceCommon.csproj" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using MessageBroker.Concretes;
 using Microsoft.Extensions.DependencyInjection;
 using ProductCommon.Commands;
 using ProductCommon.Entities;
+using ServiceCommon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.Commands
 {
-    internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto>
+    internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ServiceResult<ProductDto>>
     {
         ProductContext _context;
 
@@ -19,7 +21,7 @@ namespace ProductService.Commands
             _context = context;
         }
 
-        public async Task<ProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<ServiceResult<ProductDto>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
 
 
@@ -28,11 +30,11 @@ namespace ProductService.Commands
 
             await _context.SaveChangesAsync();
 
-            return new ProductDto()
+            return ServiceResult.Success(new ProductDto()
             {
                 Id = product.Id,
                 Name = product.Name
-            };
+            });
 
         }
     }

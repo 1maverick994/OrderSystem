@@ -11,15 +11,27 @@ namespace ProductService
         public DbSet<Product> Products { get; set; }
 
 
-        public ProductContext() 
+        public ProductContext()
         {
-            
+
         }
 
-        // The following configures EF to create a Sqlite database file in the
-        // special "local" folder for your platform.
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().HasData(
+                new Product() { Id = 1, Name = "Banana" },
+                new Product() { Id = 2, Name = "Apple" },
+                new Product() { Id = 3, Name = "Peach" }
+            );
+
+           // base.OnModelCreating(modelBuilder);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseInMemoryDatabase("ProductDb");
+        {
+            options.UseInMemoryDatabase("ProductDb");
+        }
+
     }
 
     public class Product

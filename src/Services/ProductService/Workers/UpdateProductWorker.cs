@@ -19,7 +19,7 @@ public class UpdateProductWorker : BackgroundService
     {
         _logger = logger;
 
-        rpcServer.Start<UpdateProductCommand, ProductDto>(options.Value.HostName, options.Value.UpdateProductQueueName, async (cp) =>
+        rpcServer.Start<UpdateProductCommand, ServiceResult<ProductDto>>(options.Value.HostName, options.Value.UpdateProductQueueName, async (cp) =>
         {
 
             return await sender.Send(cp);

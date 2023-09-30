@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.Commands
 {
-    internal class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ProductDto>
+    internal class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ServiceResult<ProductDto>>
     {
         ProductContext _context;
 
@@ -20,7 +20,7 @@ namespace ProductService.Commands
             _context = context;
         }
 
-        public async Task<ProductDto> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public async Task<ServiceResult<ProductDto>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
            
 
@@ -32,15 +32,15 @@ namespace ProductService.Commands
                 product.Name = request.Name;
                 await _context.SaveChangesAsync();
 
-                return new ProductDto()
+                return ServiceResult.Success(new ProductDto()
                 {
                     Name = product.Name,
                     Id = product.Id,
-                };
+                });
             }
             else
             {
-                throw new Exception("Unable to find product with id: " + request.Id);
+                return ServiceResult.Failed<ProductDto>(ServiceError.NotFound);                
             }
             
         }

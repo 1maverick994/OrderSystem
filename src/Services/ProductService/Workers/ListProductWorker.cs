@@ -7,6 +7,7 @@ using ProductCommon.Entities;
 using ProductService.Configuration;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using ServiceCommon;
 
 namespace ProductService.Workers;
 
@@ -19,7 +20,7 @@ public class ListProductWorker : BackgroundService
     {
         _logger = logger;
 
-        rpcServer.Start<ListProductCommand, ProductDto[]>(options.Value.HostName, options.Value.ListProductQueueName,  (cp) =>
+        rpcServer.Start<ListProductCommand, ServiceResult<ProductDto[]>>(options.Value.HostName, options.Value.ListProductQueueName,  (cp) =>
         {
 
             return sender.Send(cp);

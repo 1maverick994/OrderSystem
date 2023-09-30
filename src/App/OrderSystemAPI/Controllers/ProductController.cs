@@ -11,6 +11,7 @@ using ProductCommon.Entities;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
 using OrderSystemAPI.Configuration;
+using ServiceCommon;
 
 namespace OrderSystemAPI.Controllers
 {
@@ -32,7 +33,7 @@ namespace OrderSystemAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ProductDto> Post(CreateProductCommand create)
+        public async Task<ServiceResult<ProductDto>> Post(CreateProductCommand create)
         {
 
             var newProduct = await _rpcClient.GetResponse<CreateProductCommand, ProductDto>(_options.HostName, _options.CreateProductQueueName, create);
@@ -41,7 +42,7 @@ namespace OrderSystemAPI.Controllers
         }
 
         [HttpPatch()]
-        public async Task<ProductDto> Patch(UpdateProductCommand update)
+        public async Task<ServiceResult<ProductDto>> Patch(UpdateProductCommand update)
         {
 
             var updatedProduct = await _rpcClient.GetResponse<UpdateProductCommand, ProductDto>(_options.HostName, _options.UpdateProductQueueName, update);
@@ -51,17 +52,17 @@ namespace OrderSystemAPI.Controllers
 
 
         [HttpDelete()]
-        public async Task Delete(DeleteProductCommand delete)
+        public async Task<ServiceResult> Delete(DeleteProductCommand delete)
         {
 
-            await _rpcClient.GetResponse<DeleteProductCommand, object>(_options.HostName, _options.DeleteProductQueueName, delete);
+         return   await _rpcClient.GetResponse<DeleteProductCommand, object>(_options.HostName, _options.DeleteProductQueueName, delete);
 
 
         }
 
 
         [HttpGet()]
-        public async Task<ProductDto[]> List(int count, int page)
+        public async Task<ServiceResult<ProductDto[]>> List(int count, int page)
         {
 
             var products = await _rpcClient.GetResponse<ListProductCommand, ProductDto[]>(_options.HostName, _options.ListProductQueueName, new ListProductCommand() { Count = count, Page = page });

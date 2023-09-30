@@ -13,6 +13,11 @@ namespace ProductService
 
             builder.Services.AddDbContext<ProductContext>(contextLifetime: ServiceLifetime.Transient, optionsLifetime: ServiceLifetime.Transient);
 
+            using (var context = new ProductContext())
+            {
+                context.Database.EnsureCreated(); 
+            }
+
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
             builder.Services.AddHostedService<CreateProductWorker>();

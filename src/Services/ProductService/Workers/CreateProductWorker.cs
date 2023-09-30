@@ -1,3 +1,5 @@
+
+
 using System.Text;
 using MediatR;
 using MessageBroker.Abstracts;
@@ -7,6 +9,7 @@ using ProductCommon.Entities;
 using ProductService.Configuration;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+
 
 namespace ProductService.Workers;
 
@@ -19,7 +22,7 @@ public class CreateProductWorker : BackgroundService
     {
         _logger = logger;
 
-        rpcServer.Start<CreateProductCommand, ProductDto>(options.Value.HostName, options.Value.CreateProductQueueName, async (cp) =>
+        rpcServer.Start<CreateProductCommand, ServiceResult<ProductDto>>(options.Value.HostName, options.Value.CreateProductQueueName, async (cp) =>
         {
 
             return await sender.Send(cp);
