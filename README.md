@@ -2,7 +2,7 @@
 
 ## Microservices for Order and Product Management
 
-This project involves the use of microservices for the management of orders and products. 
+This is a microservices project for the management of orders and products. 
 
 Each entity is handled by a dedicated service, developed as a [Worker Service](https://learn.microsoft.com/en-us/dotnet/core/extensions/workers?pivots=dotnet-7-0). 
 
