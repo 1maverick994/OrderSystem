@@ -15,7 +15,12 @@ namespace OrderSystemAPI.Configuration
         public required string UpdateProductQueueName { get; set; }
         public required string DeleteProductQueueName { get; set; }
         public required string ListProductQueueName { get; set; }
-        
+
+        public required string CreateOrderQueueName { get; set; }
+        public required string UpdateOrderQueueName { get; set; }
+        public required string DeleteOrderQueueName { get; set; }
+        public required string ListOrderQueueName { get; set; }
+
 
     }
 }

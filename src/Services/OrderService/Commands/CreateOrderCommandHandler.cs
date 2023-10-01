@@ -30,7 +30,7 @@ namespace OrderService.Commands
 
             foreach (var line in request.Lines)
             {
-                Order.Lines.Add(new OrderLine() { IdProduct = line.ProductId, Quantity = line.Quantity });
+                Order.Lines.Add(new OrderLine() { ProductId = line.ProductId, Quantity = line.Quantity });
             }           
 
             await _context.Orders.AddAsync(Order, cancellationToken);
@@ -41,7 +41,7 @@ namespace OrderService.Commands
             {
                 Id = Order.Id,
                 CreationDate = Order.CreationDate,
-                Lines = Order.Lines.Select(ol => new OrderLineDto() { ProductId = ol.IdProduct, Quantity = ol.Quantity }).ToArray()
+                Lines = Order.Lines.Select(ol => new OrderLineDto() { ProductId = ol.ProductId, Quantity = ol.Quantity }).ToArray()
 
             });
 

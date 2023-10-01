@@ -25,27 +25,30 @@ namespace OrderService.Commands
            
 
             
-            var Order = await _context.Orders.FirstOrDefaultAsync(p=> p.Id == request.Id, cancellationToken);
+            var Order = await _context
+                .Orders
+                .Include(o=>o.Lines)
+                .FirstOrDefaultAsync(p=> p.Id == request.Id, cancellationToken);
 
             if(Order != null)
             {
                 for (int i = Order.Lines.Count -1; i >=0 ; i--)
                 {
-                    if (!request.Lines.Any(rl => rl.ProductId == Order.Lines.ElementAt(i).IdProduct))
+                    if (!request.Lines.Any(rl => rl.ProductId == Order.Lines.ElementAt(i).ProductId))
                         Order.Lines.Remove(Order.Lines.ElementAt(i));
                 }
                 
 
                 foreach (var item in request.Lines)
                 {
-                    var orderLine = Order.Lines.FirstOrDefault(ol => ol.IdProduct == item.ProductId);
+                    var orderLine = Order.Lines.FirstOrDefault(ol => ol.ProductId == item.ProductId);
                     if (orderLine != null)
                     {
                         orderLine.Quantity = item.Quantity;
                     }
                     else
                     {
-                        Order.Lines.Add(new OrderLine() { IdProduct = item.ProductId, Quantity = item.Quantity });
+                        Order.Lines.Add(new OrderLine() { ProductId = item.ProductId, Quantity = item.Quantity });
                     }
                 }
                 
@@ -55,7 +58,7 @@ namespace OrderService.Commands
                 {
                     Id = Order.Id,
                     CreationDate = Order.CreationDate,
-                    Lines = Order.Lines.Select(ol => new OrderLineDto() { ProductId = ol.IdProduct, Quantity = ol.Quantity }).ToArray()
+                    Lines = Order.Lines.Select(ol => new OrderLineDto() { ProductId = ol.ProductId, Quantity = ol.Quantity }).ToArray()
 
                 });
             }

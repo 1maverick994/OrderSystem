@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OrderCommon.Commands;
 using OrderCommon.Entities;
@@ -26,6 +27,7 @@ namespace OrderService.Commands
 
             var Orders = _context
                 .Orders
+                .Include(o => o.Lines)
                 .OrderBy(p => p.Id)
                 .Skip(request.Page * request.Count)
                 .Take(request.Count);
@@ -38,7 +40,7 @@ namespace OrderService.Commands
                 {
                     Id = Order.Id,
                     CreationDate = Order.CreationDate,
-                    Lines = Order.Lines?.Select(ol => new OrderLineDto() { ProductId = ol.IdProduct, Quantity = ol.Quantity }).ToArray()
+                    Lines = Order.Lines?.Select(ol => new OrderLineDto() { ProductId = ol.ProductId, Quantity = ol.Quantity }).ToArray()
 
                 });
             }

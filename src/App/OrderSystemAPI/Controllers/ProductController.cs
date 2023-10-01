@@ -32,7 +32,12 @@ namespace OrderSystemAPI.Controllers
 
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Creates a new product
+        /// </summary>
+        /// <param name="create"></param>
+        /// <returns></returns>
+        [HttpPost]        
         public async Task<ServiceResult<ProductDto>> Post(CreateProductCommand create)
         {
 
@@ -41,6 +46,11 @@ namespace OrderSystemAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Updates existing product
+        /// </summary>
+        /// <param name="update"></param>
+        /// <returns></returns>
         [HttpPatch()]
         public async Task<ServiceResult<ProductDto>> Patch(UpdateProductCommand update)
         {
@@ -50,7 +60,11 @@ namespace OrderSystemAPI.Controllers
 
         }
 
-
+        /// <summary>
+        /// Deletes product
+        /// </summary>
+        /// <param name="delete"></param>
+        /// <returns></returns>
         [HttpDelete()]
         public async Task<ServiceResult> Delete(DeleteProductCommand delete)
         {
@@ -60,7 +74,12 @@ namespace OrderSystemAPI.Controllers
 
         }
 
-
+        /// <summary>
+        /// List products
+        /// </summary>
+        /// <param name="count">Count of items returned</param>
+        /// <param name="page">Page of items (0 based)</param>
+        /// <returns></returns>
         [HttpGet()]
         public async Task<ServiceResult<ProductDto[]>> List(int count, int page)
         {
