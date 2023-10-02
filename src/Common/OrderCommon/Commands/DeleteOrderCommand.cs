@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace OrderCommon.Commands
 {
+
+    /// <summary>
+    /// Delete an order
+    /// </summary>
     public class DeleteOrderCommand : IRequest<ServiceCommon.ServiceResult>
     {
         public required int Id { get; set; }

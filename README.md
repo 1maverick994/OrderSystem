@@ -2,11 +2,11 @@
 
 ## Microservices for Order and Product Management
 
-This is a microservices project for the management of orders and products. 
+This is a microservices project for the management of orders and products using .NET 7.0. 
 
 Each entity is handled by a dedicated service, developed as a [Worker Service](https://learn.microsoft.com/en-us/dotnet/core/extensions/workers?pivots=dotnet-7-0). 
 
-Then, a REST API project is acting as a Gateway, enabling communication between the external world and the services. 
+Then, a ASP.NET Core REST API project is acting as a Gateway, enabling communication between the external world and the services. 
 
 The API and microservices communicate via JSON messages over an [RPC channel using RabbitMQ](https://www.rabbitmq.com/tutorials/tutorial-six-python.html).
 
@@ -26,6 +26,12 @@ It's the shared library where I've implemented the use of RabbitMQ. It exposes a
 
 ### ServiceCommon, ProductCommon, OrderCommon
 Contain models, commands, and DTOs shared between the various projects.
+
+## Considerations
+Other features that could be implemented:
+- Data validation: entities don't have many attributes to validate, but in a real system, validation should be implemented, such as FluentValidation.
+- Distributed transactions: there are some shared references between different entities. To ensure data integrity, a distributed transaction system could be implemented, such as the Saga Pattern.
+- Automapper: conversion code between Entities ad Dto should be automated with Automapper.
 
 ## Getting Started
 

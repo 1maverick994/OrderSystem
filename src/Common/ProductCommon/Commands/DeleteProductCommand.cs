@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Commands
 {
+
+    /// <summary>
+    /// Delete product
+    /// </summary>
     public class DeleteProductCommand : IRequest<ServiceCommon.ServiceResult>
     {
         public required int Id { get; set; }

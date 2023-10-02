@@ -55,7 +55,6 @@ namespace OrderService
 
     public class Order
     {
-        //[Key]
         public int Id { get; set; }
 
         public required DateTime CreationDate { get; set; }

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Commands
 {
+    /// <summary>
+    /// Updates a product
+    /// </summary>
     public class UpdateProductCommand : IRequest<ServiceResult<ProductDto>>
     {
         public required int Id { get; set; }

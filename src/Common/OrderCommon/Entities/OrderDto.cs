@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrderCommon.Entities
 {
+
+    /// <summary>
+    /// Represent and Order
+    /// </summary>
     public class OrderDto
     {
 

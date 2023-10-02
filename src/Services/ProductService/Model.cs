@@ -24,7 +24,6 @@ namespace ProductService
                 new Product() { Id = 3, Name = "Peach" }
             );
 
-           // base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

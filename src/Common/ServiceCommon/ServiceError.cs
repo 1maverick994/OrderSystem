@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ServiceCommon
 {
+
+    /// <summary>
+    /// Represent a ServiceError
+    /// </summary>
     [Serializable]
     public class ServiceError
     {

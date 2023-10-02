@@ -13,6 +13,10 @@ using ServiceCommon;
 
 namespace MessageBroker.Concretes
 {
+
+    /// <summary>
+    /// Implements IRPCClient interface on RabbitMQ
+    /// </summary>
     public class RabbitRPCClient : IRPCClient
     {
       

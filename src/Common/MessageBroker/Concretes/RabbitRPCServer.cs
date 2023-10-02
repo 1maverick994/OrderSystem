@@ -7,6 +7,10 @@ using System.Text.Json;
 
 namespace MessageBroker.Concretes
 {
+
+    /// <summary>
+    /// Implements IRPCServer interface on RabbitMQ
+    /// </summary>
     public class RabbitRPCServer : IRPCServer
     {
 
@@ -62,9 +66,6 @@ namespace MessageBroker.Concretes
             };
         }
 
-        public void Start<TRequest1, TResponse1>(string hostName, string queueName)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Commands
 {
+    /// <summary>
+    /// Create a new product
+    /// </summary>
     public class CreateProductCommand : IRequest<ServiceResult<ProductDto>>
     {
         public required string Name { get; set; }

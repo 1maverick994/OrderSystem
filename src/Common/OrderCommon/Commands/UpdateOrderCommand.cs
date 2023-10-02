@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace OrderCommon.Commands
 {
+
+    /// <summary>
+    /// Update order
+    /// </summary>
     public class UpdateOrderCommand : IRequest<ServiceResult<OrderDto>>
     {
         public required int Id { get; set; }

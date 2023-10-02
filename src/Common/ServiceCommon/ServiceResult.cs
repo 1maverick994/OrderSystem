@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ServiceCommon
 {
+
+    /// <summary>
+    /// Represent the result of a service call
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ServiceResult<T> : ServiceResult
     {
         public T Data { get; set; }
@@ -31,6 +36,9 @@ namespace ServiceCommon
         }
     }
 
+    /// <summary>
+    /// Represent the result of a service call
+    /// </summary>
     public class ServiceResult
     {
         public bool Succeeded => this.Error == null;

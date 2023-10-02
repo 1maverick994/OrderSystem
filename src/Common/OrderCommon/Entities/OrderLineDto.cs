@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace OrderCommon.Entities
 {
+
+    /// <summary>
+    /// Represent an order line
+    /// </summary>
     public class OrderLineDto
     {
 
         public int ProductId { get; set; }
 
         public double Quantity { get; set; }
-
-        public bool Equals(OrderLineDto? other)
-        {
-            return (other != null && other.Quantity == Quantity && other.ProductId == ProductId);
-        }
+     
 
     }
 }

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Commands
 {
+
+    /// <summary>
+    /// List products
+    /// </summary>
     public class ListProductCommand : IRequest<ServiceResult<ProductDto[]>>
     {
 

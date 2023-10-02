@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProductCommon.Entities
 {
+
+    /// <summary>
+    /// Represent a product
+    /// </summary>
     public class ProductDto
     {
 

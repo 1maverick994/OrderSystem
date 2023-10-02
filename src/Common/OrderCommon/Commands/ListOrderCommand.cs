@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace OrderCommon.Commands
 {
+
+    /// <summary>
+    /// List orders
+    /// </summary>
     public class ListOrderCommand : IRequest<ServiceResult<OrderDto[]>>
     {
 
